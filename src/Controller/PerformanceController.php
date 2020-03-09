@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Performance;
 use App\Form\PerformanceType;
 use App\Repository\PerformanceRepository;
+use DateTime;
+use DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +23,7 @@ class PerformanceController extends AbstractController
     public function index(PerformanceRepository $performanceRepository): Response
     {
         return $this->render('performance/index.html.twig', [
-            'performances' => $performanceRepository->findAll(),
+            'performances' => $performanceRepository->getByPeriodPerformances(new DateTime("+1 week"), new DateTime()),
         ]);
     }
 

@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Performance;
+use App\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -12,8 +14,17 @@ class DefaultController extends AbstractController
      */
     public function index()
     {
+
+        $form = $this->createForm(ContactType::class);
+        // $currentPerformances = 
+        $performances = $this->getDoctrine()->getRepository(Performance::class)->findAll();
         return $this->render('default/index.html.twig', [
-            'controller_name' => 'DefaultController',
+            'performances' => $performances,
         ]);
+
+        // return $this->render('default/index.html.twig', [
+        //     'form' => $form->createView()
+        //     // 'currentPerformances' => $currentPerformances
+        // ]);
     }
 }

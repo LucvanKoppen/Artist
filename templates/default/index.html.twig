@@ -1,16 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DefaultController!{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <style>
+        .example-wrapper {
+            margin: 1em auto;
+            max-width: 800px;
+            width: 95%;
+            font: 18px/1.5 sans-serif;
+        }
 
-<div class="example-wrapper">
-    <h1></h1>
+        .example-wrapper code {
+            background: #F5F5F5;
+            padding: 2px 6px;
+        }
+    </style>
 
-    This friendly message is coming from:
-</div>
+    <div class="example-wrapper">
+        <h2 class="d-flex justify-content-center">Artist List</h2>
+            <h3 class="d-flex justify-content-center">All performances</h3>
+            {% for performance in performances %}
+                <h5 class="d-flex justify-content-center">{{ performance.artist }}</h5>
+                <h5 class="d-flex justify-content-center">{{ performance.date }}</h5>
+                <h5 class="d-flex justify-content-center">{{ performance.price }}</h5>
+            {% endfor %}
+    </div>
 {% endblock %}
+{# <div class="example-wrapper">
+<h1>Upcoming event's</h1>
+<br><br><br>
+<h3>Hier komt lijst shit van binnen 1 week evenementen</h3>
+<br><br><br>
+<h2>Contact us</h2>
+<div>
+ {{ form_start(form) }}
+ {{ form_widget(form)}}
+ {{ form_end(form)}}
+
+ <input type="submit" class="btn btn-warning" value="Mail"/>
+</div> #}
