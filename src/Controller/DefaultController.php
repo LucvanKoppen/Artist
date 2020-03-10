@@ -6,6 +6,7 @@ use App\Entity\Performance;
 use App\Form\ContactType;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
@@ -25,16 +26,30 @@ class DefaultController extends AbstractController
         ]);
     }
 
-        /**
+    /**
      * @Route("/contact", name="contact")
      */
-    public function contact()
+    public function contact(Request $request, \Swift_Mailer $mailer)
     {
 
         $form = $this->createForm(ContactType::class);
+        $form->handleRequest($request);
 
-        return $this->render('default/contact.html.twig', [
-            'form' => $form->createView()
-        ]);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $contactFormData = $form->getData();
+
+            $message = (new \Swift_Message($contactFormData['subject']))
+                ->setTo([$contactFormData['email']])
+                ->setBody(
+                    $contactFormData['message'],
+                    'text/plain'
+                );
+
+            $mailer->send($message);
+            return $this->redirectToRoute('contact');
+            }
+            return $this->render('default/contact.html.twig', [
+                'form' => $form->createView()
+            ]);
     }
 }
