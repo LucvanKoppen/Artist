@@ -30,7 +30,7 @@ class PerformanceRepository extends ServiceEntityRepository
             ->andWhere('p.date >= :right')
             ->setParameter('left', $left)
             ->setParameter('right', $right)
-            ->orderBy('p.id', 'ASC')
+            ->orderBy('p.id', ' ')
             ->getQuery()
             ->getResult();
     }

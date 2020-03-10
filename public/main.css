@@ -1,0 +1,7 @@
+.nearbyFuture, .all, .history {
+    display: none;
+}
+
+.nearbyFutureActive, .allActive, .historyActive {
+    display:flex;
+}

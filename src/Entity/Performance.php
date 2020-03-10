@@ -64,9 +64,9 @@ class Performance
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDate(): ?string
     {
-        return $this->date;
+        return $this->date->format("d-M-Y H:i");
     }
 
     public function setDate(\DateTimeInterface $date): self
@@ -122,10 +122,5 @@ class Performance
         $this->price = $price;
 
         return $this;
-    }
-
-    public function __toString()
-    {
-        return $this->date;
     }
 }

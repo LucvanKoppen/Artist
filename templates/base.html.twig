@@ -6,9 +6,10 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>{% block title %}Artist List{% endblock %}</title>
+    <title>{% block title %}Performances{% endblock %}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sticky-footer-navbar/">
+    {# <link rel="stylesheet" href="../public/main.css"> #}
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -21,7 +22,7 @@
 <header>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">Artist List</a>
+        <a class="navbar-brand" href="/">Performances.com</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -53,6 +54,33 @@
             $(this).hide();
         });
     });
+
+function allTime() {
+        document.querySelector('.allTimeTitle').classList.add('d-block');
+        document.querySelector('.allTime').classList.add('d-block');
+        document.querySelector('.nearbyFuture').classList.remove('d-block');
+        document.querySelector('.nearbyFutureTitle').classList.remove('d-block');
+        document.querySelector('.history').classList.remove('d-block');
+        document.querySelector('.historyTitle').classList.remove('d-block');
+    }
+
+    function nearbyFuture() {
+        document.querySelector('.allTimeTitle').classList.remove('d-block');
+        document.querySelector('.allTime').classList.remove('d-block');
+        document.querySelector('.nearbyFuture').classList.add('d-block');
+        document.querySelector('.nearbyFutureTitle').classList.add('d-block');
+        document.querySelector('.history').classList.remove('d-block');
+        document.querySelector('.historyTitle').classList.remove('d-block');
+    }
+
+    function history() {
+        document.querySelector('.allTimeTitle').classList.remove('d-block');
+        document.querySelector('.allTime').classList.remove('d-block');
+        document.querySelector('.nearbyFuture').classList.remove('d-block');
+        document.querySelector('.nearbyFutureTitle').classList.remove('d-block');
+        document.querySelector('.history').classList.add('d-block');
+        document.querySelector('.historyTitle').classList.add('d-block');   
+    }
 </script>
 {% block javascripts %}{% endblock %}
 
