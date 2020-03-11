@@ -1,3 +1,4 @@
 swiftmailer:
     url: '%env(MAILER_URL)%'
+    delivery_whitelist: ['lvkop@live.nl']
     spool: { type: 'memory' }

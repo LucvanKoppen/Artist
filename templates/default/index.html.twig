@@ -18,21 +18,26 @@
                 <button class="btn btn-secondary" onclick=allTime()>All performances</button>
             </div>
 
+<div class=" nearbyFuture d-none d-block">
             {% for performance in performancesNearbyFuture %}
-                <div class="mt-5 border w-50 ml-auto mr-auto nearbyFuture d-none d-block">
+                <div class="mt-5 border w-50 ml-auto mr-auto">
                     <h5 class="d-flex justify-content-center">{{ performance.artist }}</h5>
                     <h5 class="d-flex justify-content-center">{{ performance.date }}</h5>
                     <h5 class="d-flex justify-content-center">{{ performance.price }}</h5>
                 </div>
             {% endfor %}
+            </div>
 
+
+<div class=" history d-none">
             {% for performance in performancesHistory %}
-                <div class="mt-5 border w-50 ml-auto mr-auto history d-none">
+                <div class="mt-5 border w-50 ml-auto mr-auto">
                     <h5 class="d-flex justify-content-center">{{ performance.artist }}</h5>
                     <h5 class="d-flex justify-content-center">{{ performance.date }}</h5>
                     <h5 class="d-flex justify-content-center">{{ performance.price }}</h5>
                 </div>
             {% endfor %}
+            </div>
 
             <div class=" allTime d-none">
             {% for performance in performances %}
